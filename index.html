@@ -1,66 +1,109 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>AWS Static Website</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                text-align: center;
-            }
-            .container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin-top: 50px;
-            }
-            .box {
-                width: 150px;
-                padding: 20px;
-                margin: 0 20px;
-                border: 2px solid #0073e6;
-                border-radius: 10px;
-                background-color: #e6f7ff;
-                text-align: center;
-            }
-            .arrow {
-                font-size: 40px;
-                margin: 0 10px;
-                color: #0073e6;
-            }
-            .arrow::before {
-                content: "→";
-            }
-            .box h3 {
-                font-size: 18px;
-                color: #0073e6;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Welcome to AWS Static Website</h1>
-        <p>Deployed using AWS CodePipeline</p>
-        <h3>AWS Pipeline Flow</h3>
-        <div class="container">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Pipeline Flow</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .flow-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box {
+            width: 150px;
+            padding: 20px;
+            margin: 0 20px;
+            border: 2px solid #0073e6;
+            border-radius: 10px;
+            background-color: #e6f7ff;
+            text-align: center;
+        }
+        .arrow {
+            font-size: 40px;
+            margin: 0 10px;
+            color: #0073e6;
+        }
+        .arrow::before {
+            content: "→";
+        }
+        .arrow-cm {
+            font-size: 40px;
+            margin: 20px 0;
+            color: #0073e6;
+        }
+        .box h3 {
+            font-size: 18px;
+            color: #0073e6;
+        }
+        .acm-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .acm-box {
+            width: 200px;
+            padding: 20px;
+            border: 2px solid #0073e6;
+            border-radius: 10px;
+            background-color: #e6f7ff;
+            text-align: center;
+            font-size: 18px;
+            color: #0073e6;
+        }
+    </style>
+</head>
+<body>
+    <h1>AWS Pipeline Flow</h1>
+    
+    <!-- Main Pipeline Flow (Desktop -> Route 53 -> S3) -->
+    <div class="container">
+        <div class="flow-row">
+            <!-- Desktop Box -->
             <div class="box">
-                <h3>User</h3>
-                <p>Client systems</p>
+                <h3>Desktop</h3>
+                <p>Local system initiating</p>
             </div>
+
+            <!-- Arrow from Desktop to Route 53 -->
             <div class="arrow"></div>
+
+            <!-- Route 53 Box -->
             <div class="box">
                 <h3>Route 53</h3>
                 <p>DNS management</p>
             </div>
+
+            <!-- Arrow from Route 53 to S3 -->
             <div class="arrow"></div>
-            <div class="box">
-                <h3>Certificate Manager</h3>
-                <p>SSL/TLS certificates</p>
-            </div>
-            <div class="arrow"></div>
+
+            <!-- S3 Box -->
             <div class="box">
                 <h3>S3</h3>
                 <p>Storage for files</p>
             </div>
-        </div>       
-        <script src="" async defer></script>
-    </body>
+        </div>
+
+        <!-- Arrow from Route 53 to ACM (Certificate Manager) on the next row -->
+        <div class="arrow-cm">↓</div>
+
+        <!-- Certificate Manager Box (ACM) on a separate row -->
+        <div class="acm-row">
+            <div class="acm-box">
+                <h3>Certificate Manager</h3>
+                <p>SSL/TLS certificates</p>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
